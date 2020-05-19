@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>资源</div>
 </template>
 
 <script>
 export default {
-  name: "sideBar"
+  name: "myResource"
 };
 </script>
 

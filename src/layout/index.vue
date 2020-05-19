@@ -1,27 +1,35 @@
 <template>
   <el-container class="wrapper">
-    <el-aside width="200px" class="sidebar">Aside</el-aside>
+    <el-aside width="200" class="sidebar">
+      <navBar> </navBar>
+    </el-aside>
     <el-container class="main-wrapper">
-      <el-header class="header">Header</el-header>
-      <el-main class="app-wrapper"
-        >Main
-        <router-view />
+      <el-header class="header">
+        <titleBar> </titleBar>
+      </el-header>
+      <el-main class="app-wrapper">
+        <mainApp></mainApp>
       </el-main>
     </el-container>
   </el-container>
 </template>
-
 <script>
+import navBar from "./components/navBar";
+import titleBar from "./components/titleBar";
+import mainApp from "./components/mainApp";
+
 export default {
-  name: "Layout"
+  name: "Layout",
+  components: { navBar, titleBar, mainApp }
 };
 </script>
 
 <style scoped lang="scss">
 .wrapper {
   background: grey;
+  height: 100%;
   .sidebar {
-    background: cyan;
+    background: #4e4e4e;
   }
   .main-wrapper {
     .header {

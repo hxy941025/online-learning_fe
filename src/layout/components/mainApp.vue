@@ -1,10 +1,13 @@
 <template>
-  <div></div>
+  <div>
+    main app
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-  name: "titleBar"
+  name: "mianApp"
 };
 </script>
 

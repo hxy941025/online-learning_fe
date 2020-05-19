@@ -20,37 +20,61 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    redirect: "/home",
+    redirect: "/userinfo",
+    name: "首页",
     children: [
       {
-        path: "home",
-        name: "Home",
-        component: () => import("@/views/Home"),
-        meta: { title: "Home" }
-      }
-    ]
-  },
-  {
-    path: "/userinfo",
-    component: Layout,
-    children: [
-      {
-        path: "index",
-        name: "Userinfo",
+        path: "userinfo",
+        name: "用户中心",
         component: () => import("@/views/userinfo/index"),
         meta: { title: "userinfo" }
+      },
+      {
+        path: "myResource",
+        name: "我的资源",
+        component: () => import("@/views/userinfo/myResource"),
+        meta: { title: "myResource" }
       }
     ]
   },
+
   {
     path: "/timefreq",
     component: Layout,
+    name: "时频知识",
     children: [
       {
         path: "index",
         name: "timefreq",
         component: () => import("@/views/timefreq/index"),
         meta: { title: "timefreq" }
+      }
+    ]
+  },
+
+  {
+    path: "/duty",
+    component: Layout,
+    name: "值班培训",
+    children: [
+      {
+        path: "index",
+        name: "值班培训",
+        component: () => import("@/views/duty/index"),
+        meta: { title: "duty" }
+      }
+    ]
+  },
+  {
+    path: "/dutysimulation",
+    component: Layout,
+    name: "值班模拟",
+    children: [
+      {
+        path: "index",
+        name: "值班模拟",
+        component: () => import("@/views/dutysimulation/index"),
+        meta: { title: "duty" }
       }
     ]
   },

@@ -43,7 +43,7 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import axios from 'axios'
+import { api } from "@/api/user";
 
 export default {
   name: "Login",
@@ -75,8 +75,8 @@ export default {
           { required: true, trigger: "blur", validator: validatePassword }
         ]
       },
-        loading: false,
-        passwordType: 'password',
+      loading: false,
+      passwordType: "password"
     };
   },
   methods: {
@@ -84,19 +84,19 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
-        //登录成功的跳转
-            axios({
-                method: 'post',
-                url: 'http://yike.home.xuxusheng.com:88/user/login',
-                data: {
-                    username: "admin",
-                    password: "111111"
-                }
+          //登录成功的跳转
+          api
+            .login({
+              name: "admin",
+              password: "111111"
+            })
+            .then(res => {
+              console.log(res);
             });
         } else {
           this.$message({
-              message: '密码错误',
-              type: 'error'
+            message: "密码错误",
+            type: "error"
           });
           return false;
         }
