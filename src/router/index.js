@@ -1,29 +1,66 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+/* Layout */
+import Layout from "@/layout";
 
-  const routes = [
+Vue.use(VueRouter);
+
+const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/login",
+    component: () => import("@/views/login/index"),
+    hidden: true
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/404",
+    component: () => import("@/views/404"),
+    hidden: true
+  },
+  {
+    path: "/",
+    component: Layout,
+    redirect: "/home",
+    children: [
+      {
+        path: "home",
+        name: "Home",
+        component: () => import("@/views/Home"),
+        meta: { title: "Home" }
+      }
+    ]
+  },
+  {
+    path: "/userinfo",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        name: "Userinfo",
+        component: () => import("@/views/userinfo/index"),
+        meta: { title: "userinfo" }
+      }
+    ]
+  },
+  {
+    path: "/timefreq",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        name: "timefreq",
+        component: () => import("@/views/timefreq/index"),
+        meta: { title: "timefreq" }
+      }
+    ]
+  },
+  { path: "*", redirect: "/404", hidden: true }
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;
