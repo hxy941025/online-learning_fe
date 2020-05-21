@@ -40,8 +40,7 @@ export default {
   }
   .pull-right {
     width: 200px;
-    background-color: #3fd5fb;
-    display: flex;
+    @include center();
     .user {
     }
   }

@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 
-const TokenKey = 'userToken';
-const UserName = 'userName'
+const TokenKey = "userToken";
+const UserName = "userName";
 
 export function getToken() {
   return Cookies.get(TokenKey);
@@ -16,13 +16,13 @@ export function removeToken() {
 }
 
 export function setUserName(val) {
-    return Cookies.set(UserName, val)
+  return Cookies.set(UserName, val);
 }
 
 export function getUserName() {
-    return Cookies.get(UserName)
+  return Cookies.get(UserName);
 }
 
 export function removeUserName() {
-    return Cookies.remove(UserName);
+  return Cookies.remove(UserName);
 }

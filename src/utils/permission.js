@@ -13,32 +13,30 @@ router.beforeEach((to, from, next) => {
   NProgress.start();
 
   if (getToken()) {
-      if(to.path === '/login'){
-          removeToken();
-          removeUserName();
-          store.commit("user/SET_TOKEN","")
-          store.commit("user/SET_NAME","")
-          next()
-      }else {
-          next();
-      }
+    if (to.path === "/login") {
+      removeToken();
+      removeUserName();
+      store.commit("user/SET_TOKEN", "");
+      store.commit("user/SET_NAME", "");
+      next();
+    } else {
+      next();
+    }
 
-
-      NProgress.done()
+    NProgress.done();
   } else {
-        // 如果不是去login界面，就重定向到login
-        if (whiteList.indexOf(to.path) !== -1) {
-          next();
-        } else {
-          next(`/login`);
-          NProgress.done();
-        }
+    // 如果不是去login界面，就重定向到login
+    if (whiteList.indexOf(to.path) !== -1) {
+      next();
+    } else {
+      next(`/login`);
+      NProgress.done();
+    }
   }
   NProgress.done();
 });
 
-
 router.afterEach(() => {
-    // finish progress bar
-    NProgress.done()
-})
+  // finish progress bar
+  NProgress.done();
+});

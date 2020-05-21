@@ -3,7 +3,7 @@ import {
   getToken,
   setToken,
   removeToken,
-    removeUserName,
+  removeUserName,
   setUserName,
   getUserName
 } from "@/utils/auth";
@@ -22,7 +22,7 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar;
-  },
+  }
 };
 
 const actions = {
@@ -45,14 +45,14 @@ const actions = {
     });
   },
 
-  logout({commit}){
-    return new Promise((resolve) => {
-        removeToken();
-        removeUserName();
-        commit("SET_TOKEN", "");
-        commit("SET_NAME", "");
-        resolve()
-    })
+  logout({ commit }) {
+    return new Promise(resolve => {
+      removeToken();
+      removeUserName();
+      commit("SET_TOKEN", "");
+      commit("SET_NAME", "");
+      resolve();
+    });
   }
 };
 

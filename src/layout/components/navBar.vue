@@ -19,7 +19,7 @@
           v-if="!item.hidden && !item.redirect"
         >
           <template slot="title">
-            <span slot="title">{{ item.name }}</span>
+            <span slot="title" class="font">{{ item.name }}</span>
           </template>
           <el-menu-item
             v-for="subItem in item.children"
