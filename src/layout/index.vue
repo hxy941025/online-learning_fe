@@ -26,14 +26,20 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-  background: grey;
+  background: #f4f4f5;
   height: 100%;
+  width: 100%;
   .sidebar {
     background: #4e4e4e;
+    width: 200px;
   }
   .main-wrapper {
     .header {
-      background: #41befb;
+      padding: 0;
+    }
+    .app-wrapper {
+      margin: 20px 0 0 20px;
+      background-color: white;
     }
   }
 }

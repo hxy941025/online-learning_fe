@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>值班模拟</div>
 </template>
 
 <script>

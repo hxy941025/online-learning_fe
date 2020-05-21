@@ -5,6 +5,7 @@ import router from "./router";
 import store from "./store";
 import "./plugins/element.js";
 import "./styles/reset.scss";
+import "@/utils/permission";
 
 Vue.config.productionTip = false;
 

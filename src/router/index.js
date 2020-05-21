@@ -20,11 +20,24 @@ const routes = [
   {
     path: "/",
     component: Layout,
-    redirect: "/userinfo",
+    redirect: "/home",
     name: "首页",
     children: [
       {
-        path: "userinfo",
+        path: "home",
+        name: "主页",
+        component: () => import("@/views/Home"),
+        meta: { title: "home" }
+      }
+    ]
+  },
+  {
+    path: "/userinfo",
+    component: Layout,
+    name: "用户中心",
+    children: [
+      {
+        path: "index",
         name: "用户中心",
         component: () => import("@/views/userinfo/index"),
         meta: { title: "userinfo" }
@@ -42,10 +55,11 @@ const routes = [
     path: "/timefreq",
     component: Layout,
     name: "时频知识",
+    redirect: "/timefreq/index",
     children: [
       {
         path: "index",
-        name: "timefreq",
+        name: "时频知识",
         component: () => import("@/views/timefreq/index"),
         meta: { title: "timefreq" }
       }
@@ -56,6 +70,7 @@ const routes = [
     path: "/duty",
     component: Layout,
     name: "值班培训",
+    redirect: "/duty/index",
     children: [
       {
         path: "index",
@@ -69,6 +84,7 @@ const routes = [
     path: "/dutysimulation",
     component: Layout,
     name: "值班模拟",
+    redirect: "/dutysimulation/index",
     children: [
       {
         path: "index",
@@ -77,8 +93,8 @@ const routes = [
         meta: { title: "duty" }
       }
     ]
-  },
-  { path: "*", redirect: "/404", hidden: true }
+  }
+  // { path: "*", redirect: "/404", hidden: true }
 ];
 
 const router = new VueRouter({

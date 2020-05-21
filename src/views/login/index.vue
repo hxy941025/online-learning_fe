@@ -7,7 +7,7 @@
       <el-form-item prop="username">
         <el-input
           ref="username"
-          v-model="loginForm.username"
+          v-model="loginForm.name"
           placeholder="账号"
           name="username"
           type="text"
@@ -43,7 +43,6 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import { api } from "@/api/user";
 
 export default {
   name: "Login",
@@ -64,11 +63,11 @@ export default {
     };
     return {
       loginForm: {
-        username: "admin",
+        name: "admin",
         password: "111111"
       },
       loginRules: {
-        username: [
+        name: [
           { required: true, trigger: "blur", validator: validateUsername }
         ],
         password: [
@@ -84,20 +83,17 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
-          //登录成功的跳转
-          api
-            .login({
-              name: "admin",
-              password: "111111"
+          this.$store
+            .dispatch("user/login", this.loginForm)
+            .then(() => {
+              this.$router.push({ path: this.redirect || '/' })
+              this.loading = false;
             })
-            .then(res => {
-              console.log(res);
+            .catch(() => {
+              this.loading = false;
             });
         } else {
-          this.$message({
-            message: "密码错误",
-            type: "error"
-          });
+          console.log("error submit!!");
           return false;
         }
       });

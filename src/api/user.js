@@ -1,6 +1,9 @@
 import request from "@/utils/request";
 
 class Api {
+  /*
+   *登录：name, password
+   */
   login(data) {
     return request({
       url: "/user/login",

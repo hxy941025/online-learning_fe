@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>时频</div>
 </template>
 
 <script>
