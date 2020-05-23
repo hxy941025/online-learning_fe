@@ -28,6 +28,7 @@ module.exports = {
         resolve: {
             alias: {
                 '@': resolve('src'),
+                '@c': resolve('src/components'),
                 'views': resolve('src/views'),
                 'api': resolve('src/api')
             }

@@ -26,7 +26,7 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-  background: #f4f4f5;
+  background: #f3f4f6;
   height: 100%;
   width: 100%;
   .sidebar {
@@ -38,8 +38,7 @@ export default {
       padding: 0;
     }
     .app-wrapper {
-      margin: 20px 0 0 20px;
-      background-color: white;
+      margin: 20px;
     }
   }
 }

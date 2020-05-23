@@ -1,18 +1,143 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="dashboard">
+      <el-card class="leftTab">
+        <ve-pie :data="pieData" :settings="pieSettings" width="600px"></ve-pie>
+        <p>知识点分布</p>
+      </el-card>
+      <el-card class="rightTab">
+        <ve-line
+          :data="linetData"
+          :settings="lineSettings"
+          width="600px"
+        ></ve-line>
+        <p>分数</p>
+      </el-card>
+    </div>
+    <div class="infoboard">
+      <el-card class="systemInfo">
+        <div slot="header">
+          <span>系统信息</span>
+        </div>
+        <el-table :data="infoData" stripe style="width: 600px">
+          <el-table-column prop="date" label="时间" width="180">
+          </el-table-column>
+          <el-table-column prop="info" label="信息" width="420">
+          </el-table-column>
+        </el-table>
+      </el-card>
+      <el-card class="systemNotify">
+        <div slot="header">
+          <span>系统通知</span>
+        </div>
+        <el-table :data="notifyData" stripe style="width: 600px">
+          <el-table-column type="expand">
+            <template slot-scope="props">
+              <el-form label-position="left" inline class="demo-table-expand">
+                <el-form-item label="具体通知">
+                  <span>{{ props.row.message }}</span>
+                </el-form-item>
+              </el-form>
+            </template>
+          </el-table-column>
+          <el-table-column label="时间" prop="time"> </el-table-column>
+          <el-table-column label="事项" prop="name"> </el-table-column>
+        </el-table>
+      </el-card>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
+  data() {
+    this.pieSettings = {
+      roseType: "radius"
+    };
+    this.lineSettings = {
+      metrics: ["时频", "值班", "故障"],
+      dimension: ["日期"]
+    };
+    return {
+      pieData: {
+        columns: ["知识点", "百分比"],
+        rows: [
+          { 知识点: "1", 百分比: 1393 },
+          { 知识点: "2", 百分比: 3530 },
+          { 知识点: "3", 百分比: 2923 },
+          { 知识点: "4", 百分比: 1723 },
+          { 知识点: "5", 百分比: 3792 },
+          { 知识点: "6", 百分比: 4593 }
+        ]
+      },
+      linetData: {
+        columns: ["日期", "时频", "值班", "故障"],
+        rows: [
+          { 日期: "1/1", 时频: 88, 值班: 93, 故障: 12 },
+          { 日期: "1/2", 时频: 42, 值班: 23, 故障: 54 },
+          { 日期: "1/3", 时频: 25, 值班: 12, 故障: 23 },
+          { 日期: "1/4", 时频: 21, 值班: 32, 故障: 12 },
+          { 日期: "1/5", 时频: 57, 值班: 23, 故障: 32 },
+          { 日期: "1/6", 时频: 12, 值班: 33, 故障: 23 }
+        ]
+      },
+      infoData: [
+        {
+          date: "2016-05-02",
+          info: "管理添加了xxx1"
+        },
+        {
+          date: "2016-05-04",
+          info: "管理添加了xxx1"
+        },
+        {
+          date: "2016-05-01",
+          info: "管理添加了xxx1"
+        },
+        {
+          date: "2016-05-03",
+          info: "管理添加了xxx1"
+        }
+      ],
+      notifyData: [
+        {
+          time: "12987122",
+          name: "事项1",
+          message: "详情xxxx11"
+        },
+        {
+          time: "12987122",
+          name: "事项2",
+          message: "详情xxxx22"
+        },
+        {
+          time: "12987122",
+          name: "事项3",
+          message: "详情xxx33x"
+        },
+        {
+          time: "12987122",
+          name: "事项4",
+          message: "详情xxxx44"
+        }
+      ]
+    };
   }
 };
 </script>
+
+<style scoped lang="scss">
+.home {
+  padding: 0 50px 0 50px;
+  .dashboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+  }
+  .infoboard {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+</style>

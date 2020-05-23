@@ -38,7 +38,7 @@ const routes = [
     children: [
       {
         path: "index",
-        name: "用户中心",
+        name: "我的信息",
         component: () => import("@/views/userinfo/index"),
         meta: { title: "userinfo" }
       },
@@ -52,16 +52,21 @@ const routes = [
   },
 
   {
-    path: "/timefreq",
+    path: "/exam",
     component: Layout,
-    name: "时频知识",
-    redirect: "/timefreq/index",
+    name: "考试中心",
     children: [
       {
         path: "index",
-        name: "时频知识",
-        component: () => import("@/views/timefreq/index"),
-        meta: { title: "timefreq" }
+        name: "我的考试",
+        component: () => import("@/views/exam/index"),
+        meta: { title: "exam" }
+      },
+      {
+        path: "selftest",
+        name: "自测中心",
+        component: () => import("@/views/exam/selftest"),
+        meta: { title: "selftest" }
       }
     ]
   },
