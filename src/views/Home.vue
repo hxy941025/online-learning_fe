@@ -2,7 +2,11 @@
   <div class="home">
     <div class="dashboard">
       <el-card class="leftTab">
-        <ve-pie :data="pieData" :settings="pieSettings" width="600px"></ve-pie>
+        <ve-radar
+          :data="radarData"
+          :settings="radarSettings"
+          width="600px"
+        ></ve-radar>
         <p>知识点分布</p>
       </el-card>
       <el-card class="rightTab">
@@ -22,8 +26,7 @@
         <el-table :data="infoData" stripe style="width: 600px">
           <el-table-column prop="date" label="时间" width="180">
           </el-table-column>
-          <el-table-column prop="info" label="信息" width="420">
-          </el-table-column>
+          <el-table-column prop="info" label="信息"> </el-table-column>
         </el-table>
       </el-card>
       <el-card class="systemNotify">
@@ -52,23 +55,25 @@
 export default {
   name: "Home",
   data() {
-    this.pieSettings = {
-      roseType: "radius"
+    this.radarSettings = {
+      dimension: ["日期"],
+      metrics: ["时频知识", "值班规则", "故障处理"],
+      dataType: {
+        时频知识: "percent",
+        值班规则: "percent",
+        故障处理: "percent"
+      },
+      areaStyle: "#000",
     };
     this.lineSettings = {
       metrics: ["时频", "值班", "故障"],
       dimension: ["日期"]
     };
     return {
-      pieData: {
-        columns: ["知识点", "百分比"],
+      radarData: {
+        columns: ["知识点", "时频知识", "值班规则", "故障处理"],
         rows: [
-          { 知识点: "1", 百分比: 1393 },
-          { 知识点: "2", 百分比: 3530 },
-          { 知识点: "3", 百分比: 2923 },
-          { 知识点: "4", 百分比: 1723 },
-          { 知识点: "5", 百分比: 3792 },
-          { 知识点: "6", 百分比: 4593 }
+          { 知识点: "1", 时频知识: 0.1, 值班规则: 0.33, 故障处理: 0.88 },
         ]
       },
       linetData: {

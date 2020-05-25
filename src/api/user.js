@@ -11,21 +11,14 @@ class Api {
       data
     });
   }
+
+  me() {
+    return request({
+      url: "/user/find-one",
+      method: "get",
+      headers: { "Cache-Control": "no-cache" }
+    });
+  }
 }
 
 export const api = new Api();
-
-// export function getInfo(token) {
-//     return request({
-//         url: '/vue-admin-template/user/info',
-//         method: 'get',
-//         params: { token }
-//     })
-// }
-//
-// export function logout() {
-//     return request({
-//         url: '/vue-admin-template/user/logout',
-//         method: 'post'
-//     })
-// }

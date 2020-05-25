@@ -72,6 +72,9 @@ export default {
       cursor: pointer;
       text-align: center;
       color: #080808;
+      .el-icon-user {
+        font-size: 24px;
+      }
       .name {
         display: inline-block;
         line-height: 60px;
