@@ -7,7 +7,9 @@
             v-for="item in timeFreq"
             :key="item.id"
             :examContent="item"
+            v-show="!showShade"
           ></examcard>
+          <paper v-show="showShade"></paper>
         </div>
       </el-tab-pane>
       <el-tab-pane label="值班规则">
@@ -16,7 +18,9 @@
             v-for="item in dutyRule"
             :key="item.id"
             :examContent="item"
+            v-show="!showShade"
           ></examcard>
+          <paper v-show="showShade"></paper>
         </div>
       </el-tab-pane>
       <el-tab-pane label="故障处理">
@@ -25,7 +29,9 @@
             v-for="item in falutHand"
             :key="item.id"
             :examContent="item"
+            v-show="!showShade"
           ></examcard>
+          <paper v-show="showShade"></paper>
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -34,11 +40,13 @@
 
 <script>
 import examcard from "@c/examcard";
+import paper from "@c/paper";
 
 export default {
   name: "index",
   components: {
-    examcard
+    examcard,
+    paper
   },
   data() {
     return {
@@ -60,6 +68,11 @@ export default {
         { title: "章节3", time: "2020年5月23日16:33:56", dura: "60min" }
       ]
     };
+  },
+  computed: {
+    showShade() {
+      return this.$store.state.settings.onShade;
+    }
   }
 };
 </script>
@@ -69,18 +82,15 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 120px;
 }
 .dutyRule {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 120px;
 }
 .falutHand {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-left: 120px;
 }
 </style>

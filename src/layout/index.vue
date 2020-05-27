@@ -9,6 +9,7 @@
       </el-header>
       <el-main class="app-wrapper">
         <mainApp></mainApp>
+        <div :class="{ shade: showShade }"></div>
       </el-main>
     </el-container>
   </el-container>
@@ -20,7 +21,12 @@ import mainApp from "./components/mainApp";
 
 export default {
   name: "Layout",
-  components: { navBar, titleBar, mainApp }
+  components: { navBar, titleBar, mainApp },
+  computed: {
+    showShade() {
+      return this.$store.state.settings.onShade;
+    }
+  }
 };
 </script>
 
@@ -38,8 +44,20 @@ export default {
       padding: 0;
     }
     .app-wrapper {
-      margin: 20px;
+      padding: 40px;
+      position: relative;
     }
   }
+}
+
+.shade {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: block;
 }
 </style>

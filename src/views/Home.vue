@@ -63,7 +63,7 @@ export default {
         值班规则: "percent",
         故障处理: "percent"
       },
-      areaStyle: "#000",
+      areaStyle: "#000"
     };
     this.lineSettings = {
       metrics: ["时频", "值班", "故障"],
@@ -72,9 +72,7 @@ export default {
     return {
       radarData: {
         columns: ["知识点", "时频知识", "值班规则", "故障处理"],
-        rows: [
-          { 知识点: "1", 时频知识: 0.1, 值班规则: 0.33, 故障处理: 0.88 },
-        ]
+        rows: [{ 知识点: "1", 时频知识: 0.1, 值班规则: 0.33, 故障处理: 0.88 }]
       },
       linetData: {
         columns: ["日期", "时频", "值班", "故障"],

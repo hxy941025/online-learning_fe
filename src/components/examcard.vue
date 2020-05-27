@@ -3,12 +3,15 @@
     <el-card
       class="cardBox"
       style="width: 400px; height: 300px"
+      shadow="hover"
       :examContent="examContent"
     >
       <header class="title">{{ examContent.title }}</header>
       <p class="time">发布时间：{{ examContent.time }}</p>
       <p class="dura">考试时长：{{ examContent.dura }}</p>
-      <el-button type="primary" style="margin-top: 20px">开始考试</el-button>
+      <el-button type="primary" style="margin-top: 20px" @click="showPaper"
+        >开始考试</el-button
+      >
     </el-card>
   </div>
 </template>
@@ -27,6 +30,11 @@ export default {
         dura: "60s"
       }
     };
+  },
+  methods: {
+    showPaper() {
+      this.$store.dispatch("settings/showShade", true);
+    }
   }
 };
 </script>

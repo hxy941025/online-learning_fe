@@ -27,7 +27,11 @@
         </el-checkbox-group>
       </el-form-item>
 
-      <el-form-item label="时频知识范围" prop="type" v-show="ruleForm.timeCheck">
+      <el-form-item
+        label="时频知识范围"
+        prop="type"
+        v-show="ruleForm.timeCheck"
+      >
         <el-checkbox-group v-model="ruleForm.timeAoe">
           <el-checkbox label="章节1"></el-checkbox>
           <el-checkbox label="章节2"></el-checkbox>
@@ -38,7 +42,11 @@
           <el-checkbox label="章节7"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="值班知识范围" prop="type" v-show="ruleForm.dutyCheck">
+      <el-form-item
+        label="值班知识范围"
+        prop="type"
+        v-show="ruleForm.dutyCheck"
+      >
         <el-checkbox-group v-model="ruleForm.dutyAoe">
           <el-checkbox label="章节1"></el-checkbox>
           <el-checkbox label="章节2"></el-checkbox>
@@ -47,7 +55,11 @@
           <el-checkbox label="章节5"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
-      <el-form-item label="故障知识范围" prop="type" v-show="ruleForm.falutCheck">
+      <el-form-item
+        label="故障知识范围"
+        prop="type"
+        v-show="ruleForm.falutCheck"
+      >
         <el-checkbox-group v-model="ruleForm.falutAoe">
           <el-checkbox label="章节1"></el-checkbox>
           <el-checkbox label="章节2"></el-checkbox>
@@ -148,14 +160,14 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-      Object.assign(this.ruleForm,{
-          timeAoe: [],
-          dutyAoe: [],
-          falutAoe: [],
-          timeCheck: false,
-          dutyCheck: false,
-          falutCheck: false
-      })
+      Object.assign(this.ruleForm, {
+        timeAoe: [],
+        dutyAoe: [],
+        falutAoe: [],
+        timeCheck: false,
+        dutyCheck: false,
+        falutCheck: false
+      });
     },
     selectType() {
       let type = this.ruleForm.type;
