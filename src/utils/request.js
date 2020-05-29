@@ -1,16 +1,18 @@
 import axios from "axios";
-
+import store from "@/store";
+import { getToken } from "./auth";
 //创建axios
 
 const service = axios.create({
-  baseURL: "/api",
-  timeout: 1000
+  baseURL: "/api"
 });
 
 // 添加请求拦截器
 service.interceptors.request.use(
   function(config) {
-    // 在发送请求之前做些什么
+    if (store.state.user.token) {
+      config.headers.Authorization = `Bearer ${getToken()}`;
+    }
     return config;
   },
   function(error) {

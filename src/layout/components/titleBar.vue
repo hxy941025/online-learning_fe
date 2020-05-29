@@ -1,6 +1,8 @@
 <template>
   <div class="title-wrap">
-    <div class="pull-left"></div>
+    <div class="pull-left">
+      <div class="pageName">{{ pageName }}</div>
+    </div>
     <div class="pull-right">
       <el-dropdown trigger="click">
         <div class="user">

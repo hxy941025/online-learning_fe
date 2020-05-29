@@ -21,7 +21,7 @@ const routes = [
     path: "/",
     component: Layout,
     redirect: "/home",
-    name: "首页",
+    name: "主页",
     children: [
       {
         path: "home",

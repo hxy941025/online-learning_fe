@@ -10,7 +10,11 @@
       :default-active="activePath"
     >
       <template v-for="item in routerList">
-        <el-menu-item :key="item.id" v-if="item.redirect" :index="item.redirect"
+        <el-menu-item
+          :key="item.id"
+          v-if="item.redirect"
+          :index="item.redirect"
+          class="font"
           >{{ item.name }}
         </el-menu-item>
         <el-submenu
@@ -37,8 +41,7 @@ export default {
   name: "navBar",
   data() {
     return {
-      isCollapse: false,
-
+      isCollapse: false
     };
   },
   methods: {},
@@ -46,18 +49,20 @@ export default {
     routerList() {
       return this.$router.options.routes;
     },
-      activePath(){
-        return this.$route.fullPath
-      }
-  },
-    created(){
-      console.log(this.$route)
+    activePath() {
+      return this.$route.fullPath;
     }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .el-menu-vertical-demo {
   border-right: 0;
+  text-align: center;
+  .font {
+    font-size: 16px;
+    letter-spacing: 5px;
+  }
 }
 </style>
