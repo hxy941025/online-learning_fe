@@ -1,9 +1,9 @@
 import router from "@/router";
 import store from "@/store";
-// import { Message } from "element-ui";
+import { Message } from "element-ui";
 import NProgress from "nprogress"; // progress bar
 import "nprogress/nprogress.css"; // progress bar style
-import { getToken, removeToken, removeUserName } from "@/utils/auth";
+import { getToken, removeToken } from "@/utils/auth";
 
 const whiteList = ["/login"]; // 白名单
 
@@ -12,15 +12,35 @@ NProgress.configure({ showSpinner: false }); // NProgress Configuration
 router.beforeEach((to, from, next) => {
   NProgress.start();
 
-  if (getToken()) {
+  const hasToken = getToken();
+
+  if (hasToken) {
     if (to.path === "/login") {
       removeToken();
-      removeUserName();
       store.commit("user/SET_TOKEN", "");
-      store.commit("user/SET_NAME", "");
       next();
     } else {
-      next();
+      // 先判断store中是否有username，如果有直接从store中取，否则获取用户信息
+      const hasRoles = store.getters.roles;
+      if (hasRoles !== "") {
+        next();
+      } else {
+        store
+          .dispatch("user/getInfo")
+          .then((res) => {
+            return store.dispatch("permission/generateRoutes", res.roles);
+          })
+          .then((accessRoutes) => {
+            router.addRoutes(accessRoutes);
+            console.log(store.getters.permission_routes);
+            next();
+          })
+          .catch((err) => {
+            console.log(err);
+            Message.error(err || "Has Error");
+            next(`/login`);
+          });
+      }
     }
 
     NProgress.done();

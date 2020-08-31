@@ -1,11 +1,10 @@
 <template>
   <div>
-    <el-row class="firstRow" style="height: 420px;">
+    <el-row class="firstRow" style="height: 420px">
       <el-col :span="10">
         <el-card>
           <ve-pie
             :data="pieData"
-            :settings="pieSettings"
             width="600px"
             height="350px"
             style="padding-bottom: 20px"
@@ -20,7 +19,7 @@
           <el-table
             :data="
               timeFreqData.filter(
-                data =>
+                (data) =>
                   !searchTime ||
                   data.name.toLowerCase().includes(searchTime.toLowerCase())
               )
@@ -64,7 +63,7 @@
           <el-table
             :data="
               dutyData.filter(
-                data =>
+                (data) =>
                   !searchDuty ||
                   data.name.toLowerCase().includes(searchDuty.toLowerCase())
               )
@@ -106,7 +105,7 @@
           <el-table
             :data="
               falutData.filter(
-                data =>
+                (data) =>
                   !searchFault ||
                   data.name.toLowerCase().includes(searchFault.toLowerCase())
               )
@@ -154,94 +153,94 @@ export default {
         rows: [
           { 知识点: "时频资源", 百分比: 1393 },
           { 知识点: "值班资源", 百分比: 3530 },
-          { 知识点: "故障处理", 百分比: 2923 }
-        ]
+          { 知识点: "故障处理", 百分比: 2923 },
+        ],
       },
       timeFreqData: [
         {
           date: "2016-05-02",
           name: "时频1",
-          address: "上海市普陀区金沙江路 1518 弄"
+          address: "上海市普陀区金沙江路 1518 弄",
         },
         {
           date: "2016-05-04",
           name: "时频2",
-          address: "上海市普陀区金沙江路 1517 弄"
+          address: "上海市普陀区金沙江路 1517 弄",
         },
         {
           date: "2016-05-01",
           name: "时频3",
-          address: "上海市普陀区金沙江路 1519 弄"
+          address: "上海市普陀区金沙江路 1519 弄",
         },
         {
           date: "2016-05-03",
           name: "时频4",
-          address: "上海市普陀区金沙江路 1516 弄"
+          address: "上海市普陀区金沙江路 1516 弄",
         },
         {
           date: "2016-05-03",
           name: "时频5",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
       ],
       dutyData: [
         {
           date: "2016-05-02",
           name: "时频1",
-          address: "上海市普陀区金沙江路 1518 弄"
+          address: "上海市普陀区金沙江路 1518 弄",
         },
         {
           date: "2016-05-04",
           name: "时频2",
-          address: "上海市普陀区金沙江路 1517 弄"
+          address: "上海市普陀区金沙江路 1517 弄",
         },
         {
           date: "2016-05-01",
           name: "时频3",
-          address: "上海市普陀区金沙江路 1519 弄"
+          address: "上海市普陀区金沙江路 1519 弄",
         },
         {
           date: "2016-05-03",
           name: "时频4",
-          address: "上海市普陀区金沙江路 1516 弄"
+          address: "上海市普陀区金沙江路 1516 弄",
         },
         {
           date: "2016-05-03",
           name: "时频5",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
       ],
       falutData: [
         {
           date: "2016-05-02",
           name: "时频1",
-          address: "上海市普陀区金沙江路 1518 弄"
+          address: "上海市普陀区金沙江路 1518 弄",
         },
         {
           date: "2016-05-04",
           name: "时频2",
-          address: "上海市普陀区金沙江路 1517 弄"
+          address: "上海市普陀区金沙江路 1517 弄",
         },
         {
           date: "2016-05-01",
           name: "时频3",
-          address: "上海市普陀区金沙江路 1519 弄"
+          address: "上海市普陀区金沙江路 1519 弄",
         },
         {
           date: "2016-05-03",
           name: "时频4",
-          address: "上海市普陀区金沙江路 1516 弄"
+          address: "上海市普陀区金沙江路 1516 弄",
         },
         {
           date: "2016-05-03",
           name: "时频5",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
+          address: "上海市普陀区金沙江路 1516 弄",
+        },
       ],
 
       searchTime: "",
       searchDuty: "",
-      searchFault: ""
+      searchFault: "",
     };
   },
   methods: {
@@ -250,8 +249,8 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-    }
-  }
+    },
+  },
 };
 </script>
 

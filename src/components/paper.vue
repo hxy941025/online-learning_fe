@@ -17,7 +17,7 @@
           :label="index"
           border
           :key="item.id"
-          style=" margin: 20px; width: 80%; "
+          style="margin: 20px; width: 80%"
           >{{ item }}</el-radio
         >
       </el-radio-group>
@@ -56,17 +56,17 @@ export default {
           A: "A",
           B: "B",
           C: "C",
-          D: "D"
-        }
+          D: "D",
+        },
       },
-      radio: ""
+      radio: "",
     };
   },
-    methods:{
-        closePaper(){
-            this.$store.dispatch("settings/showShade", false);
-        }
-    }
+  methods: {
+    closePaper() {
+      this.$store.dispatch("settings/showShade", false);
+    },
+  },
 };
 </script>
 

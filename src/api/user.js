@@ -8,15 +8,16 @@ class Api {
     return request({
       url: "/user/login",
       method: "post",
-      data
+      data,
     });
   }
 
-  me() {
+  getInfo(token) {
     return request({
-      url: "/user/find-one",
+      url: "/user/info",
       method: "get",
-      headers: { "Cache-Control": "no-cache" }
+      params: { token },
+      headers: { "Cache-Control": "no-store" },
     });
   }
 }

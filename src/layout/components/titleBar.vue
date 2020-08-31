@@ -37,7 +37,7 @@ export default {
     },
     pageName() {
       return this.$route.name;
-    }
+    },
   },
   methods: {
     logout() {
@@ -45,8 +45,8 @@ export default {
       this.$store.dispatch("user/logout").then(() => {
         this.$router.push(`/login`);
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

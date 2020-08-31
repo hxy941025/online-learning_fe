@@ -20,22 +20,22 @@
 export default {
   name: "examcard",
   props: {
-    examContent: Object
+    examContent: Object,
   },
   data() {
     return {
       content: {
         title: "时频测试",
         time: "2020年5月23日16:31:15",
-        dura: "60s"
-      }
+        dura: "60s",
+      },
     };
   },
   methods: {
     showPaper() {
       this.$store.dispatch("settings/showShade", true);
-    }
-  }
+    },
+  },
 };
 </script>
 

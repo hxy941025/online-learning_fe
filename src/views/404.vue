@@ -28,7 +28,7 @@
         <div class="bullshit__info">
           All rights reserved
           <a
-            style="color:#20a0ff"
+            style="color: #20a0ff"
             href="https://wallstreetcn.com"
             target="_blank"
             >wallstreetcn</a
@@ -51,8 +51,8 @@ export default {
   computed: {
     message() {
       return "The webmaster said that you can not enter this page...";
-    }
-  }
+    },
+  },
 };
 </script>
 

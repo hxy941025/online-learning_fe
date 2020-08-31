@@ -7,7 +7,7 @@
       <el-form-item prop="username">
         <el-input
           ref="username"
-          v-model="loginForm.name"
+          v-model="loginForm.username"
           placeholder="账号"
           name="username"
           type="text"
@@ -33,7 +33,7 @@
       <el-button
         :loading="loading"
         type="primary"
-        style="width:100%;margin-bottom:30px;"
+        style="width: 100%; margin-bottom: 30px"
         @click.native.prevent="handleLogin"
         >Login</el-button
       >
@@ -63,24 +63,24 @@ export default {
     };
     return {
       loginForm: {
-        name: "admin",
-        password: "111111"
+        username: "admin",
+        password: "111111",
       },
       loginRules: {
-        name: [
-          { required: true, trigger: "blur", validator: validateUsername }
+        username: [
+          { required: true, trigger: "blur", validator: validateUsername },
         ],
         password: [
-          { required: true, trigger: "blur", validator: validatePassword }
-        ]
+          { required: true, trigger: "blur", validator: validatePassword },
+        ],
       },
       loading: false,
-      passwordType: "password"
+      passwordType: "password",
     };
   },
   methods: {
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
+      this.$refs.loginForm.validate((valid) => {
         if (valid) {
           this.loading = true;
           this.$store
@@ -97,8 +97,8 @@ export default {
           return false;
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

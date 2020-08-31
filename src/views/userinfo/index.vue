@@ -52,8 +52,6 @@
 </template>
 
 <script>
-import { api } from "@/api/user";
-
 export default {
   name: "index",
 
@@ -80,59 +78,40 @@ export default {
     return {
       userData: [
         {
-          name: "账号",
-          value: " "
+          name: "用户名",
+          value: " ",
         },
         {
-          name: "手机号",
-          value: " "
-        },
-        {
-          name: "账号id",
-          value: " "
-        },
-        {
-          name: "注册时间",
-          value: " "
+          name: "用户介绍",
+          value: " ",
         },
         {
           name: "管理员权限",
-          value: " "
-        }
+          value: " ",
+        },
       ],
       ruleForm: {
         pass: "",
         checkPass: "",
-        newPass: ""
+        newPass: "",
       },
       rules: {
         pass: [{ validator: validatePass, trigger: "blur" }],
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        age: [{ validator: validatePass, trigger: "blur" }]
-      }
+        age: [{ validator: validatePass, trigger: "blur" }],
+      },
     };
   },
   methods: {
-    getUserInfo: function() {
-      api.me().then(res => {
-        const createTime = res.data.data.createdAt.match(
-          /\d{4}-\d{1,2}-\d{1,2}/
-        );
-        const isAdmin = res.data.data.isAdmin ? "是" : "否";
-        const info = [
-          res.data.data.name,
-          res.data.data.phone,
-          res.data.data.id,
-          createTime,
-          isAdmin
-        ];
-        for (let i = 0; i < 5; i++) {
-          this.userData[i].value = info[i];
-        }
+    getUserInfo: function () {
+      this.$store.dispatch("user/getInfo").then((res) => {
+        this.userData[0].value = res.name;
+        this.userData[1].value = res.introduction;
+        this.userData[2].value = res.roles;
       });
     },
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate((valid) => {
         if (valid) {
           alert("submit!");
         } else {
@@ -143,11 +122,11 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-    }
+    },
   },
   created() {
     this.getUserInfo();
-  }
+  },
 };
 </script>
 

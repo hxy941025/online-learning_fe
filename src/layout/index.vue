@@ -25,8 +25,8 @@ export default {
   computed: {
     showShade() {
       return this.$store.state.settings.onShade;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -35,6 +35,7 @@ export default {
   background: #f3f4f6;
   height: 100%;
   width: 100%;
+  min-width: 1800px;
   .sidebar {
     background: #4e4e4e;
     width: 200px;

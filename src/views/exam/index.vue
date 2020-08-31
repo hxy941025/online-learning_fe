@@ -46,7 +46,7 @@ export default {
   name: "index",
   components: {
     examcard,
-    paper
+    paper,
   },
   data() {
     return {
@@ -55,25 +55,25 @@ export default {
         { title: "章节2", time: "2020年5月23日16:33:56", dura: "60min" },
         { title: "章节3", time: "2020年5月23日16:33:56", dura: "60min" },
         { title: "章节4", time: "2020年5月23日16:33:56", dura: "60min" },
-        { title: "章节5", time: "2020年5月23日16:33:56", dura: "60min" }
+        { title: "章节5", time: "2020年5月23日16:33:56", dura: "60min" },
       ],
       dutyRule: [
         { title: "章节331", time: "2020年5月23日16:33:56", dura: "60min" },
         { title: "章节212", time: "2020年5月23日16:33:56", dura: "60min" },
-        { title: "章节3", time: "2020年5月23日16:33:56", dura: "60min" }
+        { title: "章节3", time: "2020年5月23日16:33:56", dura: "60min" },
       ],
       falutHand: [
         { title: "章节1", time: "2020年5月23日16:33:56", dura: "60min" },
         { title: "章节25", time: "2020年5月23日16:33:56", dura: "60min" },
-        { title: "章节3", time: "2020年5月23日16:33:56", dura: "60min" }
-      ]
+        { title: "章节3", time: "2020年5月23日16:33:56", dura: "60min" },
+      ],
     };
   },
   computed: {
     showShade() {
       return this.$store.state.settings.onShade;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -121,7 +121,7 @@ export default {
         torfNums: "",
         timeCheck: false,
         dutyCheck: false,
-        falutCheck: false
+        falutCheck: false,
       },
       rules: {
         type: [
@@ -129,27 +129,27 @@ export default {
             type: "array",
             required: true,
             message: "请至少选择一个科目",
-            trigger: "change"
-          }
+            trigger: "change",
+          },
         ],
         origin: [
-          { required: true, message: "请选择题目来源", trigger: "change" }
+          { required: true, message: "请选择题目来源", trigger: "change" },
         ],
         selectNums: [
-          { required: true, message: "请选择单选题数量", trigger: "change" }
+          { required: true, message: "请选择单选题数量", trigger: "change" },
         ],
         multiNums: [
-          { required: true, message: "请选择多选题数量", trigger: "change" }
+          { required: true, message: "请选择多选题数量", trigger: "change" },
         ],
         torfNums: [
-          { required: true, message: "请选择判断题数量", trigger: "change" }
-        ]
-      }
+          { required: true, message: "请选择判断题数量", trigger: "change" },
+        ],
+      },
     };
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate((valid) => {
         if (valid) {
           alert("submit!");
         } else {
@@ -166,7 +166,7 @@ export default {
         falutAoe: [],
         timeCheck: false,
         dutyCheck: false,
-        falutCheck: false
+        falutCheck: false,
       });
     },
     selectType() {
@@ -180,8 +180,8 @@ export default {
       type.includes("故障处理")
         ? (this.ruleForm.falutCheck = true)
         : (this.ruleForm.falutCheck = false);
-    }
-  }
+    },
+  },
 };
 </script>
 

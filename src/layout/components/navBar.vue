@@ -41,18 +41,18 @@ export default {
   name: "navBar",
   data() {
     return {
-      isCollapse: false
+      isCollapse: false,
     };
   },
   methods: {},
   computed: {
     routerList() {
-      return this.$router.options.routes;
+      return this.$store.getters.permission_routes;
     },
     activePath() {
       return this.$route.fullPath;
-    }
-  }
+    },
+  },
 };
 </script>
 

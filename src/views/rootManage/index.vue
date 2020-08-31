@@ -1,10 +1,10 @@
 <template>
-  <div>值班模拟</div>
+  <div>权限列表，虚拟滚动</div>
 </template>
 
 <script>
 export default {
-  name: "index"
+  name: "index",
 };
 </script>
 

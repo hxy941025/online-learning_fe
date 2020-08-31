@@ -6,16 +6,16 @@ import Layout from "@/layout";
 
 Vue.use(VueRouter);
 
-const routes = [
+export const constantRoutes = [
   {
     path: "/login",
     component: () => import("@/views/login/index"),
-    hidden: true
+    hidden: true,
   },
   {
     path: "/404",
     component: () => import("@/views/404"),
-    hidden: true
+    hidden: true,
   },
   {
     path: "/",
@@ -27,9 +27,9 @@ const routes = [
         path: "home",
         name: "主页",
         component: () => import("@/views/Home"),
-        meta: { title: "home" }
-      }
-    ]
+        meta: { title: "home" },
+      },
+    ],
   },
   {
     path: "/userinfo",
@@ -40,15 +40,15 @@ const routes = [
         path: "index",
         name: "我的信息",
         component: () => import("@/views/userinfo/index"),
-        meta: { title: "userinfo" }
+        meta: { title: "userinfo" },
       },
       {
         path: "myResource",
         name: "我的资源",
         component: () => import("@/views/userinfo/myResource"),
-        meta: { title: "myResource" }
-      }
-    ]
+        meta: { title: "myResource" },
+      },
+    ],
   },
 
   {
@@ -60,52 +60,56 @@ const routes = [
         path: "index",
         name: "我的考试",
         component: () => import("@/views/exam/index"),
-        meta: { title: "exam" }
+        meta: { title: "exam" },
       },
       {
         path: "selftest",
         name: "自测中心",
         component: () => import("@/views/exam/selftest"),
-        meta: { title: "selftest" }
-      }
-    ]
+        meta: { title: "selftest" },
+      },
+    ],
   },
 
   {
     path: "/duty",
     component: Layout,
     name: "值班培训",
-    redirect: "/duty/index",
     children: [
       {
         path: "index",
-        name: "值班培训",
+        name: "值班教程",
         component: () => import("@/views/duty/index"),
-        meta: { title: "duty" }
-      }
-    ]
+        meta: { title: "duty" },
+      },
+    ],
   },
-  {
-    path: "/dutysimulation",
-    component: Layout,
-    name: "值班模拟",
-    redirect: "/dutysimulation/index",
-    children: [
-      {
-        path: "index",
-        name: "值班模拟",
-        component: () => import("@/views/dutysimulation/index"),
-        meta: { title: "duty" }
-      }
-    ]
-  }
-  // { path: "*", redirect: "/404", hidden: true }
+  // { path: "*", redirect: "/404", hidden: true },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes: constantRoutes,
 });
 
 export default router;
+
+//以上为通用权限路由，下面的为权限路由，只有admin才能访问
+export const asyncRoutes = [
+  {
+    path: "/rootManage",
+    component: Layout,
+    name: "权限管理",
+    alwaysShow: true,
+    meta: { title: "rootManage", roles: ["admin"] },
+    children: [
+      {
+        path: "index",
+        name: "资料管理",
+        component: () => import("@/views/rootManage/index"),
+        meta: { title: "rootManage", roles: ["admin"] },
+      },
+    ],
+  },
+];

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "mianApp"
+  name: "mianApp",
 };
 </script>
 

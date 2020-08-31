@@ -61,18 +61,18 @@ export default {
       dataType: {
         时频知识: "percent",
         值班规则: "percent",
-        故障处理: "percent"
+        故障处理: "percent",
       },
-      areaStyle: "#000"
+      areaStyle: "#000",
     };
     this.lineSettings = {
       metrics: ["时频", "值班", "故障"],
-      dimension: ["日期"]
+      dimension: ["日期"],
     };
     return {
       radarData: {
         columns: ["知识点", "时频知识", "值班规则", "故障处理"],
-        rows: [{ 知识点: "1", 时频知识: 0.1, 值班规则: 0.33, 故障处理: 0.88 }]
+        rows: [{ 知识点: "1", 时频知识: 0.1, 值班规则: 0.33, 故障处理: 0.88 }],
       },
       linetData: {
         columns: ["日期", "时频", "值班", "故障"],
@@ -82,51 +82,51 @@ export default {
           { 日期: "1/3", 时频: 25, 值班: 12, 故障: 23 },
           { 日期: "1/4", 时频: 21, 值班: 32, 故障: 12 },
           { 日期: "1/5", 时频: 57, 值班: 23, 故障: 32 },
-          { 日期: "1/6", 时频: 12, 值班: 33, 故障: 23 }
-        ]
+          { 日期: "1/6", 时频: 12, 值班: 33, 故障: 23 },
+        ],
       },
       infoData: [
         {
           date: "2016-05-02",
-          info: "管理添加了xxx1"
+          info: "管理添加了xxx1",
         },
         {
           date: "2016-05-04",
-          info: "管理添加了xxx1"
+          info: "管理添加了xxx1",
         },
         {
           date: "2016-05-01",
-          info: "管理添加了xxx1"
+          info: "管理添加了xxx1",
         },
         {
           date: "2016-05-03",
-          info: "管理添加了xxx1"
-        }
+          info: "管理添加了xxx1",
+        },
       ],
       notifyData: [
         {
           time: "12987122",
           name: "事项1",
-          message: "详情xxxx11"
+          message: "详情xxxx11",
         },
         {
           time: "12987122",
           name: "事项2",
-          message: "详情xxxx22"
+          message: "详情xxxx22",
         },
         {
           time: "12987122",
           name: "事项3",
-          message: "详情xxx33x"
+          message: "详情xxx33x",
         },
         {
           time: "12987122",
           name: "事项4",
-          message: "详情xxxx44"
-        }
-      ]
+          message: "详情xxxx44",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

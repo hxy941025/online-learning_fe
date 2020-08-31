@@ -1,16 +1,10 @@
 import { api } from "@/api/user";
-import {
-  getToken,
-  setToken,
-  removeToken,
-  removeUserName,
-  setUserName,
-  getUserName
-} from "@/utils/auth";
+import { getToken, setToken, removeToken } from "@/utils/auth";
 
 const state = {
-  name: getUserName() || "",
-  token: getToken() || ""
+  token: getToken() || "",
+  name: "",
+  roles: "",
 };
 
 const mutations = {
@@ -20,45 +14,63 @@ const mutations = {
   SET_NAME: (state, name) => {
     state.name = name;
   },
-  SET_AVATAR: (state, avatar) => {
-    state.avatar = avatar;
-  }
+  SET_ROLES: (state, roles) => {
+    state.roles = roles;
+  },
 };
 
 const actions = {
   login({ commit }, userInfo) {
-    const { name, password } = userInfo;
+    const { username, password } = userInfo;
     return new Promise((resolve, reject) => {
       api
-        .login({ name: name, password: password })
-        .then(response => {
-          const data = response.data.data;
+        .login({ username: username, password: password })
+        .then((response) => {
+          const data = response.data;
           commit("SET_TOKEN", data.token);
-          commit("SET_NAME", data.user.name);
           setToken(data.token);
-          setUserName(data.user.name);
           resolve();
         })
-        .catch(err => {
+        .catch((err) => {
           reject(err);
         });
     });
   },
 
   logout({ commit }) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       removeToken();
-      removeUserName();
       commit("SET_TOKEN", "");
-      commit("SET_NAME", "");
+      commit("SET_ROLES", "");
       resolve();
     });
-  }
+  },
+
+  getInfo({ commit, state }) {
+    return new Promise((resolve, reject) => {
+      api
+        .getInfo(state.token)
+        .then((response) => {
+          const { data } = response;
+
+          if (!data) {
+            return reject("Verification failed, please Login again.");
+          }
+          const { name, roles } = data;
+          commit("SET_NAME", name);
+          commit("SET_ROLES", roles);
+          resolve(data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  },
 };
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 };
