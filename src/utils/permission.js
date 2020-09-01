@@ -32,8 +32,7 @@ router.beforeEach((to, from, next) => {
           })
           .then((accessRoutes) => {
             router.addRoutes(accessRoutes);
-            console.log(store.getters.permission_routes);
-            next();
+            next({ ...to, replace: true });
           })
           .catch((err) => {
             console.log(err);
