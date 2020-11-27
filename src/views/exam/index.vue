@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import examcard from "@c/examcard";
+import examcard from "@c/examCard";
 import paper from "@c/paper";
 
 export default {

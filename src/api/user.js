@@ -20,6 +20,14 @@ class Api {
       headers: { "Cache-Control": "no-store" },
     });
   }
+
+  changeInfo(data) {
+    return request({
+      url: "/user/changeInfo",
+      method: "post",
+      data,
+    });
+  }
 }
 
 export const api = new Api();

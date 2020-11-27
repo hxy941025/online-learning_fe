@@ -31,6 +31,9 @@
       </el-card>
       <el-card class="systemNotify">
         <div slot="header">
+          <!--          <el-button type="primary" @click="$router.push('/rootManage/index')"-->
+          <!--            >跳转权限页</el-button-->
+          <!--          >-->
           <span>系统通知</span>
         </div>
         <el-table :data="notifyData" stripe style="width: 600px">

@@ -14,7 +14,7 @@ const service = axios.create({
 // 添加请求拦截器
 service.interceptors.request.use(
   function (config) {
-    if (store.state.user.token) {
+    if (store.getters.token) {
       config.headers.Authorization = `Bearer ${getToken()}`;
     }
     return config;
@@ -29,7 +29,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const res = response.data;
-    // if the custom code is not 20000, it is judged as an error.
+    // 非20000 即为错误响应
     if (res.code !== 20000) {
       Message({
         message: res.message || "Error",
@@ -37,7 +37,7 @@ service.interceptors.response.use(
         duration: 5 * 1000,
       });
 
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
+      // 50008: token错误 ; 50012: Other clients logged in; 50014: Token expired;
       if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         // to re-login
         MessageBox.confirm(

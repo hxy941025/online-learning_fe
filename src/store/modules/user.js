@@ -66,6 +66,27 @@ const actions = {
         });
     });
   },
+
+  changeInfo({ state }, userInfo) {
+    const username = state.name;
+    const { pass, checkPass } = userInfo;
+    console.log(username, pass, checkPass);
+    return new Promise((resolve, reject) => {
+      api
+        .changeInfo({
+          username: username,
+          oldPassword: pass,
+          newPassword: checkPass,
+        })
+        .then((res) => {
+          console.log(res.data);
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
 };
 
 export default {

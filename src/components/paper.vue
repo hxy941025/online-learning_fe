@@ -6,7 +6,7 @@
         <i class="el-icon-close"></i
       ></el-button>
     </div>
-    <div>
+    <div style="margin-bottom: 20px">
       <header>{{ question.type }}</header>
     </div>
     <div>
@@ -51,12 +51,12 @@ export default {
     return {
       question: {
         type: "单选题",
-        title: "如下选项",
+        title: "以下原子钟中稳定性最好得是",
         answer: {
-          A: "A",
-          B: "B",
-          C: "C",
-          D: "D",
+          A: "氢钟",
+          B: "铷钟",
+          C: "铯钟",
+          D: "锶钟",
         },
       },
       radio: "",
@@ -72,6 +72,7 @@ export default {
 
 <style scoped lang="scss">
 .box-card {
+  position: relative;
   width: 100%;
   z-index: 10;
   .answerList {
@@ -79,6 +80,11 @@ export default {
     align-items: center;
     flex-direction: column;
     margin-bottom: 20px;
+  }
+  .commit {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }
 </style>

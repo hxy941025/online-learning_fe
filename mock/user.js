@@ -10,17 +10,17 @@ const tokens = {
 const users = {
   "admin-token": {
     roles: ["admin"],
-    introduction: "I am a super administrator",
+    introduction: "超级管理员用户，拥有管理页访问及使用权限",
     avatar:
       "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
-    name: "Super Admin",
+    name: "超级管理员",
   },
   "editor-token": {
     roles: ["editor"],
-    introduction: "I am an editor",
+    introduction: "普通用户，无管理页访问及使用权限",
     avatar:
       "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
-    name: "Normal Editor",
+    name: "普通用户",
   },
 };
 
@@ -76,6 +76,18 @@ module.exports = [
     url: "/user/logout",
     type: "post",
     response: (_) => {
+      return {
+        code: 20000,
+        data: "success",
+      };
+    },
+  },
+
+  {
+    url: "/user/changeInfo",
+    type: "post",
+    response: (_) => {
+      console.log(_);
       return {
         code: 20000,
         data: "success",

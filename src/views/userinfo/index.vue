@@ -18,23 +18,23 @@
           label-width="100px"
           class="demo-ruleForm"
         >
-          <el-form-item label="密码" prop="pass">
+          <el-form-item label="旧密码" prop="pass">
             <el-input
               type="password"
-              v-model="ruleForm.pass"
-              show-password
-            ></el-input>
-          </el-form-item>
-          <el-form-item label="确认密码" prop="checkPass">
-            <el-input
-              type="password"
-              v-model="ruleForm.checkPass"
+              v-model.number.trim="ruleForm.pass"
               show-password
             ></el-input>
           </el-form-item>
           <el-form-item label="新密码" prop="newPass">
             <el-input
-              v-model.number="ruleForm.newPass"
+              type="password"
+              v-model.number.trim="ruleForm.newPass"
+              show-password
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="确认密码" prop="checkPass">
+            <el-input
+              v-model.number.trim="ruleForm.checkPass"
               show-password
             ></el-input>
           </el-form-item>
@@ -46,7 +46,6 @@
           </el-form-item>
         </el-form>
       </el-tab-pane>
-      <el-tab-pane label="修改手机号">修改手机号</el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -58,18 +57,8 @@ export default {
   data() {
     const validatePass = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入密码"));
-      } else {
-        if (this.ruleForm.checkPass !== "") {
-          this.$refs.ruleForm.validateField("checkPass");
-        }
-        callback();
-      }
-    };
-    const validatePass2 = (rule, value, callback) => {
-      if (value === "") {
         callback(new Error("请再次输入密码"));
-      } else if (value !== this.ruleForm.pass) {
+      } else if (value != this.ruleForm.newPass) {
         callback(new Error("两次输入密码不一致!"));
       } else {
         callback();
@@ -92,13 +81,11 @@ export default {
       ],
       ruleForm: {
         pass: "",
-        checkPass: "",
         newPass: "",
+        checkPass: "",
       },
       rules: {
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        age: [{ validator: validatePass, trigger: "blur" }],
+        checkPass: [{ validator: validatePass, trigger: "blur" }],
       },
     };
   },
@@ -110,14 +97,20 @@ export default {
         this.userData[2].value = res.roles;
       });
     },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert("submit!");
-        } else {
-          console.log("error submit!!");
-          return false;
+    submitForm() {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid && this.ruleForm.pass) {
+          this.loading = true;
+          this.$store.dispatch("user/changeInfo", this.ruleForm).then(() => {
+            this.loading = false;
+            this.$message({
+              type: "success",
+              message: "修改成功",
+            });
+          });
+          return;
         }
+        return this.$message("请正确输入");
       });
     },
     resetForm(formName) {

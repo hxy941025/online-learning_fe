@@ -1,6 +1,6 @@
 import { constantRoutes, asyncRoutes } from "../../router";
 
-// 根据路由.role来判断是否是权限路由
+// 根据传入的roles及路由.role来判断，返回该roles可以访问的路由
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some((role) => route.meta.roles.includes(role));

@@ -47,6 +47,7 @@ export default {
   methods: {},
   computed: {
     routerList() {
+      // console.log(this.$router.options.routes);
       return this.$store.getters.permission_routes;
     },
     activePath() {

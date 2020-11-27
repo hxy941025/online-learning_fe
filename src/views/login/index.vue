@@ -106,5 +106,13 @@ export default {
 .login-container {
   background: #b2b2b2;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title-container {
+    text-align: center;
+    margin-bottom: 50px;
+  }
 }
 </style>
